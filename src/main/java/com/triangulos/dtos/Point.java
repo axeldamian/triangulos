@@ -29,5 +29,10 @@ public class Point {
     public void setValue( int v ) {
         this.value = v;
     }
+
+    @Override
+    public String toString() {
+        return "[" + this.x + "," + this.y + "]" + " --> " + this.value;
+    }
     
 }

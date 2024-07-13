@@ -2,6 +2,7 @@ package com.triangulos.dtos;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Triangles {
 
@@ -183,6 +184,35 @@ public class Triangles {
         points.add( this.k );
         points.add( this.l );
         return points;
+    }
+
+    public boolean chechValuesNoRepeated() {
+        Set<Integer> values = new TreeSet<>();
+        values.add( this.a.getValue() );
+        values.add( this.b.getValue() );
+        values.add( this.c.getValue() );
+        values.add( this.d.getValue() );
+        values.add( this.e.getValue() );
+        values.add( this.f.getValue() );
+        values.add( this.g.getValue() );
+        values.add( this.h.getValue() );
+        values.add( this.i.getValue() );
+        values.add( this.j.getValue() );
+        values.add( this.k.getValue() );
+        values.add( this.l.getValue() );
+        return ( values.size() == 12 );
+    }
+
+    public boolean checkTriangle1() {
+        return this.getPointsTriangle1().size() == 6 && this.getSumTriangle1() == 12;
+    }
+
+    public boolean checkTriangle2() {
+        return this.getPointsTriangle2().size() == 6 && this.getSumTriangle2() == 12;
+    }
+
+    public boolean checkTriangle3() {
+        return this.getPointsTriangle3().size() == 6 && this.getSumTriangle3() == 12;
     }
     
 }
