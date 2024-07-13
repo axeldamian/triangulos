@@ -186,7 +186,7 @@ public class Triangles {
         return points;
     }
 
-    public boolean chechValuesNoRepeated() {
+    private boolean chechValuesNoRepeated() {
         Set<Integer> values = new TreeSet<>();
         values.add( this.a.getValue() );
         values.add( this.b.getValue() );
@@ -203,15 +203,19 @@ public class Triangles {
         return ( values.size() == 12 );
     }
 
-    public boolean checkTriangle1() {
+    public boolean checkTriangles() {
+        return ( this.chechValuesNoRepeated() && this.checkTriangle1() && this.checkTriangle2() && this.checkTriangle3() );
+    }
+
+    private boolean checkTriangle1() {
         return this.getPointsTriangle1().size() == 6 && this.getSumTriangle1() == 12;
     }
 
-    public boolean checkTriangle2() {
+    private boolean checkTriangle2() {
         return this.getPointsTriangle2().size() == 6 && this.getSumTriangle2() == 12;
     }
 
-    public boolean checkTriangle3() {
+    private boolean checkTriangle3() {
         return this.getPointsTriangle3().size() == 6 && this.getSumTriangle3() == 12;
     }
     
