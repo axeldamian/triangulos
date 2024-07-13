@@ -12,6 +12,8 @@ el extremo derecho de 1 y un punto justo en el medio derecho de 1.
 
 >3 es análogo.
 
+>Cada triangulo contiene 6 puntos.
+
 >Los puntos de los triangulos tienen valores únicos entre 1 y 12, no se repiten.
 Cada triangulo suma 42, los 3 iguales.
 
