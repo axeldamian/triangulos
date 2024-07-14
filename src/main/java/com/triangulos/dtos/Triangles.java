@@ -132,6 +132,47 @@ public class Triangles {
         }
     }
 
+    public boolean isFull() {
+
+        if ( this.a.getValue() == 0 ) {
+            return false;
+        }
+        if ( this.b.getValue() == 0  ) {
+            return false;
+        }
+        if ( this.c.getValue() == 0 ) {
+            return false;
+        }
+        if ( this.d.getValue() == 0 ) {
+            return false;
+        }
+        if ( this.e.getValue() == 0 ) {
+            return false;
+        }
+        if ( this.f.getValue() == 0 ) {
+            return false;
+        }
+        if ( this.g.getValue() == 0 ) {
+            return false;
+        }
+        if ( this.h.getValue() == 0 ) {
+            return false;
+        }
+        if ( this.i.getValue() == 0 ) {
+            return false;
+        }
+        if ( this.j.getValue() == 0 ) {
+            return false;
+        }
+        if ( this.k.getValue() == 0 ) {
+            return false;
+        }
+        if ( this.l.getValue() == 0 ) {
+            return false;
+        }
+        return true;
+    }
+
     public Point getA() {
         return a;
     }
