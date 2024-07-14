@@ -66,43 +66,60 @@ public class Triangles {
 
     public Triangles( Triangles triangles , int lastNumber) {
         super();
+
         boolean last = false;
 
+        Triangles newTriangles = new Triangles( triangles );
+
+        this = newTriangles;
+
         if ( this.a.getValue() == 0 && !last ) {
-            this.a = triangles.a;
+            this.a.setValue( lastNumber );
+            last = true;
         }
         if ( this.a.getValue() == 0 && !last ) {
-            this.b = triangles.b;
+            this.b.setValue( lastNumber );
+            last = true;
         }
         if ( this.a.getValue() == 0 && !last ) {
-            this.c = triangles.c;
+            this.c.setValue( lastNumber );
+            last = true;
         }
         if ( this.a.getValue() == 0 && !last ) {
-            this.d = triangles.d;
+            this.d.setValue( lastNumber );
+            last = true;
         }
         if ( this.a.getValue() == 0 && !last ) {
-            this.e = triangles.e;
+            this.e.setValue( lastNumber );
+            last = true;
         }
         if ( this.a.getValue() == 0 && !last ) {
-            this.f = triangles.f;
+            this.f.setValue( lastNumber );
+            last = true;
         }
         if ( this.a.getValue() == 0 && !last ) {
-            this.g = triangles.g;
+            this.g.setValue( lastNumber );
+            last = true;
         }
         if ( this.a.getValue() == 0 && !last ) {
-            this.h = triangles.h;
+            this.h.setValue( lastNumber );
+            last = true;
         }
         if ( this.a.getValue() == 0 && !last ) {
-            this.i = triangles.i;
+            this.i.setValue( lastNumber );
+            last = true;
         }
         if ( this.a.getValue() == 0 && !last ) {
-            this.j = triangles.j;
+            this.j.setValue( lastNumber );
+            last = true;
         }
         if ( this.a.getValue() == 0 && !last ) {
-            this.k = triangles.k;
+            this.k.setValue( lastNumber );
+            last = true;
         }
         if ( this.a.getValue() == 0 && !last ) {
-            this.l = triangles.l;
+            this.l.setValue( lastNumber );
+            last = true;
         }
     }
 
