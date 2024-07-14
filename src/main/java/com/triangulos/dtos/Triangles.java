@@ -269,15 +269,15 @@ public class Triangles {
         this.l = l;
     }
 
-    public int getSumTriangle1() {
+    private int getSumTriangle1() {
         return ( this.a.getValue() + this.d.getValue() + this.e.getValue() + this.h.getValue() + this.i.getValue() + this.j.getValue());
     }
 
-    public int getSumTriangle2() {
+    private int getSumTriangle2() {
         return ( this.b.getValue() + this.e.getValue() + this.f.getValue() + this.i.getValue() + this.j.getValue() + this.k.getValue());
     }
 
-    public int getSumTriangle3() {
+    private int getSumTriangle3() {
         return ( this.c.getValue() + this.f.getValue() + this.g.getValue() + this.j.getValue() + this.k.getValue() + this.l.getValue());
     }
 
@@ -362,15 +362,48 @@ public class Triangles {
     }
 
     private boolean checkTriangle1() {
-        return this.getPointsTriangle1().size() == 6 && this.getSumTriangle1() == 12;
+        return this.getPointsTriangle1().size() == 6 && this.getSumTriangle1() = 42;
     }
 
     private boolean checkTriangle2() {
-        return this.getPointsTriangle2().size() == 6 && this.getSumTriangle2() == 12;
+        return this.getPointsTriangle2().size() == 6 && this.getSumTriangle2() == 42;
     }
 
     private boolean checkTriangle3() {
-        return this.getPointsTriangle3().size() == 6 && this.getSumTriangle3() == 12;
+        return this.getPointsTriangle3().size() == 6 && this.getSumTriangle3() == 42;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("\n");
+        s.append(" ");
+        s.append(" ");
+        s.append(this.a);
+        s.append(" ");
+        s.append(" ");
+        s.append(this.b);
+        s.append(" ");
+        s.append(" ");
+        s.append(this.c);
+        s.append(" ");
+        s.append(" ");
+
+        s.append(" ");
+        s.append(this.d);
+        s.append(" ");
+        s.append(this.e);
+        s.append(" ");
+        s.append(this.f);
+        s.append(" ");
+        s.append(this.g);
+
+        s.append(this.h);
+        s.append(this.i);
+        s.append(this.j);
+        s.append(this.k);
+        s.append(this.l);
+
+        return s.toString();
     }
     
 }
