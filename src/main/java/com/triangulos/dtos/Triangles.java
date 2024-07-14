@@ -41,6 +41,7 @@ public class Triangles {
         this.g = new Point();
         this.h = new Point();
         this.i = new Point();
+        this.j = new Point();
         this.k = new Point();
         this.l = new Point();
     }
@@ -384,6 +385,7 @@ public class Triangles {
         s.append(this.c);
         s.append(" ");
         s.append(" ");
+        s.append("\n");
 
         s.append(" ");
         s.append(this.d);
@@ -393,12 +395,14 @@ public class Triangles {
         s.append(this.f);
         s.append(" ");
         s.append(this.g);
+        s.append("\n");
 
         s.append(this.h);
         s.append(this.i);
         s.append(this.j);
         s.append(this.k);
         s.append(this.l);
+        s.append("\n");
 
         return s.toString();
     }
