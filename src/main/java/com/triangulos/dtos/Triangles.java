@@ -359,7 +359,7 @@ public class Triangles {
     }
 
     private boolean checkTriangle1() {
-        return this.getPointsTriangle1().size() == 6 && this.getSumTriangle1() = 42;
+        return this.getPointsTriangle1().size() == 6 && this.getSumTriangle1() == 42;
     }
 
     private boolean checkTriangle2() {
