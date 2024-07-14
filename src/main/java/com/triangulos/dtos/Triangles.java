@@ -294,19 +294,16 @@ public class Triangles {
 
         for ( int x = 1; x <= 12; x++ ) {
 
-                        if ( !this.isFull() ) {
-                            Triangles newTriangles = new Triangles( this , x );
-                    
-                            if ( newTriangles.checkTriangles() ) {
-                                solutionSet.add( newTriangles );
-                                return;
-                            } else {
-                                System.out.println("entro");
-
-
-                                newTriangles.calculateAllSolutions(solutionSet);
-                            }
-                        }
+            Triangles newTriangles = new Triangles( this , x );
+        
+                if ( newTriangles.isFull() && newTriangles.checkTriangles() ) {
+                    System.out.println("un elemento fue agregado");
+                    solutionSet.add( newTriangles );
+                    return;
+                } else {
+                    System.out.println("entro");
+                    newTriangles.calculateAllSolutions(solutionSet);
+                }
         }
     }
 
@@ -361,11 +358,13 @@ public class Triangles {
     }
 
     public boolean checkTriangles() {
-        return ( this.chechValuesNoRepeated() && this.checkTriangle1() && this.checkTriangle2() && this.checkTriangle3() );
+        return this.checkTriangle1();
+        //return ( this.chechValuesNoRepeated() && this.checkTriangle1() && this.checkTriangle2() && this.checkTriangle3() );
     }
 
     private boolean checkTriangle1() {
-        return this.getPointsTriangle1().size() == 6 && this.getSumTriangle1() == 42;
+        return this.getSumTriangle1() == 42;
+        //return this.getPointsTriangle1().size() == 6 && this.getSumTriangle1() == 42;
     }
 
     private boolean checkTriangle2() {
