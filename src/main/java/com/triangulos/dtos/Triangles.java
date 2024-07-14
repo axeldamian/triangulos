@@ -86,47 +86,47 @@ public class Triangles {
             this.a.setValue( lastNumber );
             last = true;
         }
-        if ( this.a.getValue() == 0 && !last ) {
+        if ( this.b.getValue() == 0 && !last ) {
             this.b.setValue( lastNumber );
             last = true;
         }
-        if ( this.a.getValue() == 0 && !last ) {
+        if ( this.c.getValue() == 0 && !last ) {
             this.c.setValue( lastNumber );
             last = true;
         }
-        if ( this.a.getValue() == 0 && !last ) {
+        if ( this.d.getValue() == 0 && !last ) {
             this.d.setValue( lastNumber );
             last = true;
         }
-        if ( this.a.getValue() == 0 && !last ) {
+        if ( this.e.getValue() == 0 && !last ) {
             this.e.setValue( lastNumber );
             last = true;
         }
-        if ( this.a.getValue() == 0 && !last ) {
+        if ( this.f.getValue() == 0 && !last ) {
             this.f.setValue( lastNumber );
             last = true;
         }
-        if ( this.a.getValue() == 0 && !last ) {
+        if ( this.g.getValue() == 0 && !last ) {
             this.g.setValue( lastNumber );
             last = true;
         }
-        if ( this.a.getValue() == 0 && !last ) {
+        if ( this.h.getValue() == 0 && !last ) {
             this.h.setValue( lastNumber );
             last = true;
         }
-        if ( this.a.getValue() == 0 && !last ) {
+        if ( this.i.getValue() == 0 && !last ) {
             this.i.setValue( lastNumber );
             last = true;
         }
-        if ( this.a.getValue() == 0 && !last ) {
+        if ( this.j.getValue() == 0 && !last ) {
             this.j.setValue( lastNumber );
             last = true;
         }
-        if ( this.a.getValue() == 0 && !last ) {
+        if ( this.k.getValue() == 0 && !last ) {
             this.k.setValue( lastNumber );
             last = true;
         }
-        if ( this.a.getValue() == 0 && !last ) {
+        if ( this.l.getValue() == 0 && !last ) {
             this.l.setValue( lastNumber );
             last = true;
         }
