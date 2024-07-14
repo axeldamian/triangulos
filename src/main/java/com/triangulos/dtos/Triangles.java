@@ -64,6 +64,48 @@ public class Triangles {
         this.l = triangles.l;
     }
 
+    public Triangles( Triangles triangles , int lastNumber) {
+        super();
+        boolean last = false;
+
+        if ( this.a.getValue() == 0 && !last ) {
+            this.a = triangles.a;
+        }
+        if ( this.a.getValue() == 0 && !last ) {
+            this.b = triangles.b;
+        }
+        if ( this.a.getValue() == 0 && !last ) {
+            this.c = triangles.c;
+        }
+        if ( this.a.getValue() == 0 && !last ) {
+            this.d = triangles.d;
+        }
+        if ( this.a.getValue() == 0 && !last ) {
+            this.e = triangles.e;
+        }
+        if ( this.a.getValue() == 0 && !last ) {
+            this.f = triangles.f;
+        }
+        if ( this.a.getValue() == 0 && !last ) {
+            this.g = triangles.g;
+        }
+        if ( this.a.getValue() == 0 && !last ) {
+            this.h = triangles.h;
+        }
+        if ( this.a.getValue() == 0 && !last ) {
+            this.i = triangles.i;
+        }
+        if ( this.a.getValue() == 0 && !last ) {
+            this.j = triangles.j;
+        }
+        if ( this.a.getValue() == 0 && !last ) {
+            this.k = triangles.k;
+        }
+        if ( this.a.getValue() == 0 && !last ) {
+            this.l = triangles.l;
+        }
+    }
+
     public Point getA() {
         return a;
     }
@@ -175,13 +217,11 @@ public class Triangles {
     private void calculateAllSolutions(HashSet<Triangles> solutionSet) throws CloneNotSupportedException {
 
         for ( int i = 1; i <= 12; i++ ) {
-            for ( int j = 1; j <= this.getBoardHeight(); j++ ) {
 
-                        Triangles newTriangles = new Triangles();
-                        newBoard.setCurrentPosition(i, j);
+                        Triangles newTriangles = new Triangles(this);
 
-                        if ( newBoard.currentValueIsZero() ) {
-                            newBoard.setNextIncrementalValue();
+                        if ( newTriangles.currentValueIsZero() ) {
+                            newTriangles.setNextIncrementalValue();
                     
                             if ( newTriangles.checkTriangles() ) {
                                 solutionSet.add( newTriangles );
@@ -190,7 +230,6 @@ public class Triangles {
                                 newTriangles.calculateAllSolutions(solutionSet);
                             }
                         }
-            }
         }
     }
 
