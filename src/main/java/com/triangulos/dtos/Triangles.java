@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class Triangles {
 
     private Point a;
@@ -43,6 +46,22 @@ public class Triangles {
         this.i = new Point();
         this.k = new Point();
         this.l = new Point();
+    }
+
+    public Triangles( Triangles triangles ) {
+        super();
+        this.a = triangles.a;
+        this.b = triangles.b;
+        this.c = triangles.c;
+        this.d = triangles.d;
+        this.e = triangles.e;
+        this.f = triangles.f;
+        this.g = triangles.g;
+        this.h = triangles.h;
+        this.i = triangles.i;
+        this.j = triangles.j;
+        this.k = triangles.k;
+        this.l = triangles.l;
     }
 
     public Point getA() {
@@ -151,6 +170,28 @@ public class Triangles {
 
     public int getSumTriangle3() {
         return ( this.c.getValue() + this.f.getValue() + this.g.getValue() + this.j.getValue() + this.k.getValue() + this.l.getValue());
+    }
+
+    private void calculateAllSolutions(HashSet<Triangles> solutionSet) throws CloneNotSupportedException {
+
+        for ( int i = 1; i <= 12; i++ ) {
+            for ( int j = 1; j <= this.getBoardHeight(); j++ ) {
+
+                        Triangles newTriangles = new Triangles();
+                        newBoard.setCurrentPosition(i, j);
+
+                        if ( newBoard.currentValueIsZero() ) {
+                            newBoard.setNextIncrementalValue();
+                    
+                            if ( newTriangles.checkTriangles() ) {
+                                solutionSet.add( newTriangles );
+                                return;
+                            } else {
+                                newTriangles.calculateAllSolutions(solutionSet);
+                            }
+                        }
+            }
+        }
     }
 
     public Set<Point> getPointsTriangle1() {
