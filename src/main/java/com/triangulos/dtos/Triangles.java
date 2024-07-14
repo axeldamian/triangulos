@@ -32,18 +32,20 @@ public class Triangles {
 
     public Triangles() {
         super();
-        this.a = new Point();
-        this.b = new Point();
-        this.c = new Point();
-        this.d = new Point();
-        this.e = new Point();
-        this.f = new Point();
-        this.g = new Point();
-        this.h = new Point();
-        this.i = new Point();
-        this.j = new Point();
-        this.k = new Point();
-        this.l = new Point();
+        this.a = new Point( 1 , 1 );
+        this.b = new Point( 1 , 2 );
+        this.c = new Point( 1 , 3 );
+
+        this.d = new Point( 2 , 1 );
+        this.e = new Point( 2 , 2 ); // shared by 2 triangles
+        this.f = new Point( 2 , 3 ); // shared by 2 triangles
+        this.g = new Point( 2 , 4 );
+
+        this.h = new Point( 3 , 1 );
+        this.i = new Point( 3 , 2 ); // shared by 2 triangles
+        this.j = new Point( 3 , 3 ); // shared by all
+        this.k = new Point( 3 , 4 ); // shared by 2 triangles
+        this.l = new Point( 3 , 5 );
     }
 
     public Triangles( Triangles triangles ) {
@@ -299,6 +301,9 @@ public class Triangles {
                                 solutionSet.add( newTriangles );
                                 return;
                             } else {
+                                System.out.println("entro");
+
+
                                 newTriangles.calculateAllSolutions(solutionSet);
                             }
                         }
