@@ -281,14 +281,21 @@ public class Triangles {
         return ( this.c.getValue() + this.f.getValue() + this.g.getValue() + this.j.getValue() + this.k.getValue() + this.l.getValue());
     }
 
+    public Set<Triangles> getAllSolutions() throws CloneNotSupportedException {
+        
+        HashSet<Triangles> solutionSet = new HashSet<>();
+
+        this.calculateAllSolutions( solutionSet );
+
+        return solutionSet;
+    }
+
     private void calculateAllSolutions(HashSet<Triangles> solutionSet) throws CloneNotSupportedException {
 
-        for ( int i = 1; i <= 12; i++ ) {
+        for ( int x = 1; x <= 12; x++ ) {
 
-                        Triangles newTriangles = new Triangles(this);
-
-                        if ( newTriangles.currentValueIsZero() ) {
-                            newTriangles.setNextIncrementalValue();
+                        if ( !this.isFull() ) {
+                            Triangles newTriangles = new Triangles( this , x );
                     
                             if ( newTriangles.checkTriangles() ) {
                                 solutionSet.add( newTriangles );
