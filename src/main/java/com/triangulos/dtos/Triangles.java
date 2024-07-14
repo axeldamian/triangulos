@@ -4,9 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.springframework.stereotype.Service;
-
-@Service
 public class Triangles {
 
     private Point a;
