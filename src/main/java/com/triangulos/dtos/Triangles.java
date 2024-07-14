@@ -69,9 +69,18 @@ public class Triangles {
 
         boolean last = false;
 
-        Triangles newTriangles = new Triangles( triangles );
-
-        this = newTriangles;
+        this.a = triangles.a;
+        this.b = triangles.b;
+        this.c = triangles.c;
+        this.d = triangles.d;
+        this.e = triangles.e;
+        this.f = triangles.f;
+        this.g = triangles.g;
+        this.h = triangles.h;
+        this.i = triangles.i;
+        this.j = triangles.j;
+        this.k = triangles.k;
+        this.l = triangles.l;
 
         if ( this.a.getValue() == 0 && !last ) {
             this.a.setValue( lastNumber );
