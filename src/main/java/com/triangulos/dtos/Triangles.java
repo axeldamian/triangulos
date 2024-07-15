@@ -292,6 +292,102 @@ public class Triangles {
         this.l = l;
     }
 
+    public void setValueA( int val ) {
+        this.a.setValue(val);
+    }
+
+    public void setValueB( int val ) {
+        this.b.setValue(val);
+    }
+
+    public void setValueC( int val ) {
+        this.c.setValue(val);
+    }
+
+    public void setValueD( int val ) {
+        this.d.setValue(val);
+    }
+
+    public void setValueE( int val ) {
+        this.e.setValue(val);
+    }
+
+    public void setValueF( int val ) {
+        this.f.setValue(val);
+    }
+
+    public void setValueG( int val ) {
+        this.g.setValue(val);
+    }
+
+    public void setValueH( int val ) {
+        this.h.setValue(val);
+    }
+
+    public void setValueI( int val ) {
+        this.i.setValue(val);
+    }
+
+    public void setValueJ( int val ) {
+        this.j.setValue(val);
+    }
+
+    public void setValueK( int val ) {
+        this.k.setValue(val);
+    }
+
+    public void setValueL( int val ) {
+        this.l.setValue(val);
+    }
+
+    public int getValueA() {
+        return this.a.getValue();
+    }
+
+    public int getValueB() {
+        return this.b.getValue();
+    }
+
+    public int getValueC() {
+        return this.c.getValue();
+    }
+
+    public int getValueD() {
+        return this.d.getValue();
+    }
+
+    public int getValueE() {
+        return this.e.getValue();
+    }
+
+    public int getValueF() {
+        return this.f.getValue();
+    }
+
+    public int getValueG() {
+        return this.g.getValue();
+    }
+
+    public int getValueH() {
+        return this.h.getValue();
+    }
+
+    public int getValueI() {
+        return this.i.getValue();
+    }
+
+    public int getValueJ() {
+        return this.j.getValue();
+    }
+
+    public int getValueK() {
+        return this.k.getValue();
+    }
+
+    public int getValueL() {
+        return this.l.getValue();
+    }
+
     private int getSumTriangle1() {
         return ( this.a.getValue() + this.d.getValue() + this.e.getValue() + this.h.getValue() + this.i.getValue() + this.j.getValue());
     }
@@ -321,16 +417,17 @@ public class Triangles {
 
         for ( int x = 1; x <= 12; x++ ) {
 
-            Triangles newTriangles = new Triangles( this , x );
-            log.info( newTriangles.toString() );
+            Triangles triangles = this;
+            if ( triangles.valuesUsed().contains(x) ) {
+                return;
+            }
+            Triangles newTriangles = new Triangles( triangles , x );
         
                 if ( newTriangles.isFull() ) {
                     if ( newTriangles.checkTriangles() ) {
                         solutionSet.add( newTriangles );
                         return;
                     }
-                    log.info("nube");
-                    return;
                 } else {
                     newTriangles.calculateAllSolutions(solutionSet);
                 }

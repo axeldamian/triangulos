@@ -52,7 +52,9 @@ class TrianglesTests {
 
         assertEquals( p1.getValue(), newTriangles.getA().getValue() );
         assertEquals( p2.getValue(), newTriangles.getB().getValue());
+
         assertEquals( 7, newTriangles.getC().getValue());
+
         assertEquals( 0, newTriangles.getD().getValue());
         assertEquals( 0, newTriangles.getE().getValue());
         assertEquals( 0, newTriangles.getF().getValue());
@@ -70,6 +72,31 @@ class TrianglesTests {
         assertEquals( 6 , triangles.getPointsTriangle1().size() );
         assertEquals( 6 , triangles.getPointsTriangle2().size() );
         assertEquals( 6 , triangles.getPointsTriangle3().size() );
+    }
+
+    @Test
+    void testingIsFull() {
+        Triangles triangles = new Triangles();
+        assertFalse( triangles.isFull() );
+
+        triangles.setValueA(1);
+        triangles.setValueB(2);
+        triangles.setValueC(3);
+        triangles.setValueD(4);
+        triangles.setValueE(5);
+        triangles.setValueF(6);
+        triangles.setValueG(7);
+        triangles.setValueH(8);
+        triangles.setValueI(9);
+        triangles.setValueJ(10);
+        triangles.setValueK(11);
+
+        assertFalse( triangles.isFull() );
+
+        triangles.setValueL(12);
+
+        assertTrue( triangles.isFull() );
+        
     }
     
 }
