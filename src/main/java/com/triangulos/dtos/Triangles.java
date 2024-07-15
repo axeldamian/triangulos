@@ -135,6 +135,7 @@ public class Triangles {
             this.l.setValue( lastNumber );
             last = true;
         }
+
     }
 
     public Set<Integer> valuesUsed() {

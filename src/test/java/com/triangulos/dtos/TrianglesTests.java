@@ -9,6 +9,27 @@ import org.springframework.boot.test.context.SpringBootTest;
 class TrianglesTests {
 
     @Test
+    void testingCopyContructorMoreOneDigit() {
+        Triangles triangles = new Triangles();
+        Point p1 = new Point();
+        p1.setValue(9);
+        triangles.setA(p1);
+
+        assertEquals( p1.getValue(), triangles.getA().getValue() );
+        assertEquals( 0, triangles.getB().getValue());
+        assertEquals( 0, triangles.getC().getValue());
+        assertEquals( 0, triangles.getD().getValue());
+        assertEquals( 0, triangles.getE().getValue());
+        assertEquals( 0, triangles.getF().getValue());
+        assertEquals( 0, triangles.getG().getValue());
+        assertEquals( 0, triangles.getH().getValue());
+        assertEquals( 0, triangles.getI().getValue());
+        assertEquals( 0, triangles.getJ().getValue());
+        assertEquals( 0, triangles.getK().getValue());
+        assertEquals( 0, triangles.getL().getValue());
+    }
+
+    @Test
     void testingPointsTriangle1() {
         Triangles triangles = new Triangles();
         assertEquals( 6 , triangles.getPointsTriangle1().size() );
