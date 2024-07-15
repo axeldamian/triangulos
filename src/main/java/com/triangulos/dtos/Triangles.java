@@ -74,18 +74,18 @@ public class Triangles {
 
         boolean last = false;
 
-        this.a = triangles.a;
-        this.b = triangles.b;
-        this.c = triangles.c;
-        this.d = triangles.d;
-        this.e = triangles.e;
-        this.f = triangles.f;
-        this.g = triangles.g;
-        this.h = triangles.h;
-        this.i = triangles.i;
-        this.j = triangles.j;
-        this.k = triangles.k;
-        this.l = triangles.l;
+        this.a = triangles.getA();
+        this.b = triangles.getB();
+        this.c = triangles.getC();
+        this.d = triangles.getD();
+        this.e = triangles.getE();
+        this.f = triangles.getF();
+        this.g = triangles.getG();
+        this.h = triangles.getH();
+        this.i = triangles.getI();
+        this.j = triangles.getJ();
+        this.k = triangles.getK();
+        this.l = triangles.getL();
 
         if ( this.a.getValue() == 0 && !last ) {
             this.a.setValue( lastNumber );
@@ -135,6 +135,23 @@ public class Triangles {
             this.l.setValue( lastNumber );
             last = true;
         }
+    }
+
+    public Set<Integer> valuesUsed() {
+        HashSet<Integer> values = new HashSet<>();
+        values.add( this.a.getValue() );
+        values.add( this.b.getValue() );
+        values.add( this.c.getValue() );
+        values.add( this.d.getValue() );
+        values.add( this.e.getValue() );
+        values.add( this.f.getValue() );
+        values.add( this.g.getValue() );
+        values.add( this.h.getValue() );
+        values.add( this.i.getValue() );
+        values.add( this.j.getValue() );
+        values.add( this.k.getValue() );
+        values.add( this.l.getValue() );
+        return values;
     }
 
     public boolean isFull() {
@@ -311,6 +328,7 @@ public class Triangles {
                         solutionSet.add( newTriangles );
                         return;
                     }
+                    log.info("nube");
                     return;
                 } else {
                     newTriangles.calculateAllSolutions(solutionSet);
