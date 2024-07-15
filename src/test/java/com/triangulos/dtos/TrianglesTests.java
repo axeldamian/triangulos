@@ -9,14 +9,20 @@ import org.springframework.boot.test.context.SpringBootTest;
 class TrianglesTests {
 
     @Test
-    void testingCopyContructorMoreOneDigit() {
+    void testingSetValue() {
         Triangles triangles = new Triangles();
-        Point p1 = new Point();
+
+        Point p1 = new Point( 1 , 1 );
         p1.setValue(9);
+
+        Point p2 = new Point( 1 , 2 );
+        p2.setValue(8);
+
         triangles.setA(p1);
+        triangles.setB(p2);
 
         assertEquals( p1.getValue(), triangles.getA().getValue() );
-        assertEquals( 0, triangles.getB().getValue());
+        assertEquals( p2.getValue(), triangles.getB().getValue());
         assertEquals( 0, triangles.getC().getValue());
         assertEquals( 0, triangles.getD().getValue());
         assertEquals( 0, triangles.getE().getValue());
@@ -27,6 +33,35 @@ class TrianglesTests {
         assertEquals( 0, triangles.getJ().getValue());
         assertEquals( 0, triangles.getK().getValue());
         assertEquals( 0, triangles.getL().getValue());
+    }
+
+    @Test
+    void testingCopyContructorMoreOneDigit() {
+        Triangles triangles = new Triangles();
+
+        Point p1 = new Point( 1 , 1 );
+        p1.setValue(9);
+
+        Point p2 = new Point( 1 , 2 );
+        p2.setValue(8);
+
+        triangles.setA(p1);
+        triangles.setB(p2);
+
+        Triangles newTriangles = new Triangles( triangles , 7 );
+
+        assertEquals( p1.getValue(), newTriangles.getA().getValue() );
+        assertEquals( p2.getValue(), newTriangles.getB().getValue());
+        assertEquals( 7, newTriangles.getC().getValue());
+        assertEquals( 0, newTriangles.getD().getValue());
+        assertEquals( 0, newTriangles.getE().getValue());
+        assertEquals( 0, newTriangles.getF().getValue());
+        assertEquals( 0, newTriangles.getG().getValue());
+        assertEquals( 0, newTriangles.getH().getValue());
+        assertEquals( 0, newTriangles.getI().getValue());
+        assertEquals( 0, newTriangles.getJ().getValue());
+        assertEquals( 0, newTriangles.getK().getValue());
+        assertEquals( 0, newTriangles.getL().getValue());
     }
 
     @Test
