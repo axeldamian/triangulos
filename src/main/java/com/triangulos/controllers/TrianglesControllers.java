@@ -28,7 +28,7 @@ public class TrianglesControllers {
     @GetMapping("/calculate-solution")
     public Triangles getSolution() throws CloneNotSupportedException {
         log.info("/calculate-solution");
-        return service.solutionsCardinal();
+        return service.getRandomSolution();
     }
     
 }

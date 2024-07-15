@@ -1,6 +1,7 @@
 package com.triangulos.services;
 
 import java.util.Iterator;
+import java.util.Random;
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
@@ -20,10 +21,15 @@ public class GameService {
         Triangles triangles = new Triangles();
         Set<Triangles> solutions = triangles.getAllSolutions();
         Iterator<Triangles> iterator = solutions.iterator();
-        for ( Triangles it : iterator ) {
-
+        Triangles item = null;
+        int cont = 1;
+        Random rndm = new Random();
+        int rndmNumber = rndm.nextInt(1);
+        while ( cont <= rndmNumber && iterator.hasNext() ) {
+            item = iterator.next();
+            cont++;
         }
-
+        return item;
     }
 
 }

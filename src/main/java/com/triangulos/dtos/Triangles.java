@@ -4,7 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Triangles {
+
+    static Logger log = LogManager.getLogger(Triangles.class);
 
     private Point a;
 
@@ -285,7 +290,11 @@ public class Triangles {
         
         HashSet<Triangles> solutionSet = new HashSet<>();
 
+        log.info( solutionSet.size() );
+
         this.calculateAllSolutions( solutionSet );
+
+        log.info( solutionSet.size() );
 
         return solutionSet;
     }
@@ -295,13 +304,15 @@ public class Triangles {
         for ( int x = 1; x <= 12; x++ ) {
 
             Triangles newTriangles = new Triangles( this , x );
+            log.info( newTriangles.toString() );
         
-                if ( newTriangles.isFull() && newTriangles.checkTriangles() ) {
-                    System.out.println("un elemento fue agregado");
-                    solutionSet.add( newTriangles );
+                if ( newTriangles.isFull() ) {
+                    if ( newTriangles.checkTriangles() ) {
+                        solutionSet.add( newTriangles );
+                        return;
+                    }
                     return;
                 } else {
-                    System.out.println("entro");
                     newTriangles.calculateAllSolutions(solutionSet);
                 }
         }
@@ -363,7 +374,7 @@ public class Triangles {
     }
 
     private boolean checkTriangle1() {
-        return this.getSumTriangle1() == 42;
+        return this.getSumTriangle1() == 21;
         //return this.getPointsTriangle1().size() == 6 && this.getSumTriangle1() == 42;
     }
 
