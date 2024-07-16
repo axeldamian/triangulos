@@ -427,9 +427,7 @@ public class Triangles {
                         return;
                     }
                 } else {
-                    log.info( newTriangles.toString() );
                     calculateAllSolutions(solutionSet, newTriangles);
-                    continue;
                 }
         }
     }

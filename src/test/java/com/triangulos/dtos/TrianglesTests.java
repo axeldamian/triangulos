@@ -112,5 +112,25 @@ class TrianglesTests {
             assertEquals(x, newTriangles.getA().getValue());
         }
     }
+
+    @Test
+    void testingValuesOfTriangles() throws CloneNotSupportedException {
+        Triangles triangles = new Triangles();
+
+        triangles.setValueA(1);
+        triangles.setValueB(2);
+        triangles.setValueC(3);
+        triangles.setValueD(4);
+        triangles.setValueE(5);
+        triangles.setValueF(6);
+        triangles.setValueG(7);
+        triangles.setValueH(8);
+        triangles.setValueI(9);
+        triangles.setValueJ(10);
+        triangles.setValueK(11);
+
+        Triangles newTriangles = new Triangles(triangles, 12);
+        assertEquals(12, newTriangles.getL().getValue() );
+    }
     
 }
