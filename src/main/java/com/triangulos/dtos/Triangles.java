@@ -404,11 +404,7 @@ public class Triangles {
         
         HashSet<Triangles> solutionSet = new HashSet<>();
 
-        log.info( solutionSet.size() );
-
         this.calculateAllSolutions( solutionSet );
-
-        log.info( solutionSet.size() );
 
         return solutionSet;
     }
@@ -417,17 +413,22 @@ public class Triangles {
 
         for ( int x = 1; x <= 12; x++ ) {
 
+            log.info(x);
+
             Triangles triangles = this;
             if ( triangles.valuesUsed().contains(x) ) {
                 return;
             }
+
             Triangles newTriangles = new Triangles( triangles , x );
+            log.info( newTriangles.toString() );
+            log.info( newTriangles.isFull() );
         
                 if ( newTriangles.isFull() ) {
-                    if ( newTriangles.checkTriangles() ) {
+                    //if ( newTriangles.checkTriangles() ) {
                         solutionSet.add( newTriangles );
                         return;
-                    }
+                    //}
                 } else {
                     newTriangles.calculateAllSolutions(solutionSet);
                 }
@@ -501,7 +502,7 @@ public class Triangles {
     private boolean checkTriangle3() {
         return this.getPointsTriangle3().size() == 6 && this.getSumTriangle3() == 42;
     }
-
+/*
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder("\n");
@@ -529,12 +530,48 @@ public class Triangles {
         s.append("\n");
 
         s.append(this.h);
+        s.append(" ");
         s.append(this.i);
+        s.append(" ");
         s.append(this.j);
+        s.append(" ");
         s.append(this.k);
+        s.append(" ");
         s.append(this.l);
         s.append("\n");
 
+        return s.toString();
+    }
+        */
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("\n");
+        s.append("(");
+        s.append( this.a.getValue() );
+        s.append(",");
+        s.append( this.b.getValue() );
+        s.append(",");
+        s.append( this.c.getValue() );
+        s.append(",");
+        s.append( this.d.getValue() );
+        s.append(",");
+        s.append( this.e.getValue() );
+        s.append(",");
+        s.append( this.f.getValue() );
+        s.append(",");
+        s.append( this.g.getValue() );
+        s.append(",");
+        s.append( this.h.getValue() );
+        s.append(",");
+        s.append( this.i.getValue() );
+        s.append(",");
+        s.append( this.j.getValue() );
+        s.append(",");
+        s.append( this.k.getValue() );
+        s.append(",");
+        s.append( this.l.getValue() );
+        s.append(")");
         return s.toString();
     }
     

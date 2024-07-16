@@ -11,14 +11,23 @@ import com.triangulos.dtos.Triangles;
 @Service
 public class GameService {
 
-    private Triangles triangles = new Triangles();
+    private Triangles triangles;
 
     public int solutionsCardinal() throws CloneNotSupportedException {
+
+        if ( triangles == null) {
+            triangles = new Triangles();
+        }
+
         return triangles.getAllSolutions().size();
     }
 
     public Triangles getRandomSolution() throws CloneNotSupportedException {
-        Triangles triangles = new Triangles();
+           
+        if ( triangles == null) {
+            triangles = new Triangles();
+        }
+
         Set<Triangles> solutions = triangles.getAllSolutions();
         Iterator<Triangles> iterator = solutions.iterator();
         Triangles item = null;
