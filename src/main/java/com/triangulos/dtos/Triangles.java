@@ -69,23 +69,22 @@ public class Triangles {
         this.l = triangles.l;
     }
 
-    public Triangles( Triangles triangles , int lastNumber) {
-        super();
+    public Triangles( Triangles triangles , int lastNumber) throws CloneNotSupportedException {
 
         boolean last = false;
 
-        this.a = triangles.getA();
-        this.b = triangles.getB();
-        this.c = triangles.getC();
-        this.d = triangles.getD();
-        this.e = triangles.getE();
-        this.f = triangles.getF();
-        this.g = triangles.getG();
-        this.h = triangles.getH();
-        this.i = triangles.getI();
-        this.j = triangles.getJ();
-        this.k = triangles.getK();
-        this.l = triangles.getL();
+        this.a = triangles.getA().clone();
+        this.b = triangles.getB().clone();
+        this.c = triangles.getC().clone();
+        this.d = triangles.getD().clone();
+        this.e = triangles.getE().clone();
+        this.f = triangles.getF().clone();
+        this.g = triangles.getG().clone();
+        this.h = triangles.getH().clone();
+        this.i = triangles.getI().clone();
+        this.j = triangles.getJ().clone();
+        this.k = triangles.getK().clone();
+        this.l = triangles.getL().clone();
 
         if ( this.a.getValue() == 0 && !last ) {
             this.a.setValue( lastNumber );
@@ -404,33 +403,33 @@ public class Triangles {
         
         HashSet<Triangles> solutionSet = new HashSet<>();
 
-        this.calculateAllSolutions( solutionSet );
+        Triangles triangles = new Triangles();
+
+        calculateAllSolutions( solutionSet, triangles );
 
         return solutionSet;
     }
 
-    private void calculateAllSolutions(HashSet<Triangles> solutionSet) throws CloneNotSupportedException {
+    private void calculateAllSolutions(HashSet<Triangles> solutionSet, Triangles triangles) throws CloneNotSupportedException {
 
         for ( int x = 1; x <= 12; x++ ) {
 
-            log.info(x);
-
-            Triangles triangles = this;
-            if ( triangles.valuesUsed().contains(x) ) {
-                return;
+            Set<Integer> values = triangles.valuesUsed();
+            if ( values.contains(x) ) {
+                continue;
             }
 
             Triangles newTriangles = new Triangles( triangles , x );
-            log.info( newTriangles.toString() );
-            log.info( newTriangles.isFull() );
         
                 if ( newTriangles.isFull() ) {
-                    //if ( newTriangles.checkTriangles() ) {
+                    if ( newTriangles.checkTriangles() ) {
                         solutionSet.add( newTriangles );
                         return;
-                    //}
+                    }
                 } else {
-                    newTriangles.calculateAllSolutions(solutionSet);
+                    log.info( newTriangles.toString() );
+                    calculateAllSolutions(solutionSet, newTriangles);
+                    continue;
                 }
         }
     }
@@ -491,7 +490,7 @@ public class Triangles {
     }
 
     private boolean checkTriangle1() {
-        return this.getSumTriangle1() == 21;
+        return this.getSumTriangle1() == 42;
         //return this.getPointsTriangle1().size() == 6 && this.getSumTriangle1() == 42;
     }
 

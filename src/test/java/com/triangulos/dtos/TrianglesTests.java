@@ -36,7 +36,7 @@ class TrianglesTests {
     }
 
     @Test
-    void testingCopyContructorMoreOneDigit() {
+    void testingCopyContructorMoreOneDigit() throws CloneNotSupportedException {
         Triangles triangles = new Triangles();
 
         Point p1 = new Point( 1 , 1 );
@@ -97,6 +97,20 @@ class TrianglesTests {
 
         assertTrue( triangles.isFull() );
         
+    }
+
+    @Test
+    void testingFormation() throws CloneNotSupportedException {
+        Triangles triangles = new Triangles();
+
+        assertEquals( 0 , triangles.getA().getValue() );
+        
+        for ( int x = 1; x <= 12; x++ ) {
+            assertEquals(0, triangles.getA().getValue());
+            
+            Triangles newTriangles = new Triangles(triangles, x);
+            assertEquals(x, newTriangles.getA().getValue());
+        }
     }
     
 }

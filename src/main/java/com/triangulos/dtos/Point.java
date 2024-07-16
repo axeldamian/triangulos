@@ -31,6 +31,15 @@ public class Point {
     }
 
     @Override
+    protected Point clone() throws CloneNotSupportedException {
+        Point point = new Point();
+        point.x = this.x;
+        point.y = this.y;
+        point.value = this.value;
+        return point;
+    }
+
+    @Override
     public String toString() {
         return "[" + this.x + "," + this.y + "]" + " --> " + this.value;
     }

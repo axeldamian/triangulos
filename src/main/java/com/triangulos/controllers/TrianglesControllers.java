@@ -20,7 +20,6 @@ public class TrianglesControllers {
     @GetMapping("/cardinal")
     public int getCardinal() throws CloneNotSupportedException {
         log.info("/cardinal");
-        log.info( new Triangles() );
         return service.solutionsCardinal();
     }
 
