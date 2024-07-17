@@ -437,10 +437,20 @@ public class Triangles {
         }
     }
 
-    public boolean isBadPath() {
-        return ( !this.triangle1IsFull() && !this.triangle2IsFull()  && !this.triangle3IsFull() ) || 
-        ( this.triangle1IsFull() || this.triangle2IsFull()  || this.triangle3IsFull() ) ||
-        ( !this.checkTriangle1()  || !this.checkTriangle2()  || !this.checkTriangle3() ) ;
+    public boolean isPath() {
+        if ( !this.triangle1IsFull() && !this.triangle2IsFull()  && !this.triangle3IsFull() ) {
+            return true;
+        }
+        if ( this.triangle1IsFull() && !this.checkTriangle1() ) {
+            return false;
+        }
+        if ( this.triangle2IsFull()  && !this.checkTriangle2() ) {
+            return false;
+        } 
+        if ( this.triangle3IsFull() && !this.checkTriangle3() ) {
+            return false;
+        }
+        return true;
     }
 
     public Set<Point> getPointsTriangle1() {
