@@ -419,6 +419,8 @@ public class Triangles {
                 continue;
             }
 
+            log.info( triangles.toString() );
+
             Triangles newTriangles = null;
             
             if( isPath() ) {
@@ -426,7 +428,6 @@ public class Triangles {
             } else {
                 continue;
             }
-            log.info( newTriangles.toString() );
         
                 if ( newTriangles.isFull() ) {
                     if ( newTriangles.checkTriangles() ) {
@@ -451,6 +452,17 @@ public class Triangles {
         if ( !this.triangle1IsFull() && !this.triangle2IsFull()  && !this.triangle3IsFull() ) {
             result = result && true;
         }
+
+        if ( !this.triangle1IsFull() && this.getSumTriangle1() > 42 ) {
+            return false;
+        }
+        if ( !this.triangle2IsFull() && this.getSumTriangle2() > 42 ) {
+            return false;
+        }
+        if ( !this.triangle3IsFull() && this.getSumTriangle3() > 42 ) {
+            return false;
+        }
+
         if ( this.triangle1IsFull() && !this.checkTriangle1() ) {
             result = result && false;
         }
@@ -672,6 +684,7 @@ public class Triangles {
             s.append("(");
 
             s.append("[");
+
             s.append(this.a.getValue());
             s.append(",");
             s.append(this.d.getValue());
@@ -682,12 +695,42 @@ public class Triangles {
             s.append(",");
             s.append(this.i.getValue());
             s.append(",");
-            
+            s.append(this.j.getValue());
+
             s.append("]");
+
             s.append("[");
+
+            s.append(this.b.getValue());
+            s.append(",");
+            s.append(this.e.getValue());
+            s.append(",");
+            s.append(this.f.getValue());
+            s.append(",");
+            s.append(this.i.getValue());
+            s.append(",");
+            s.append(this.j.getValue());
+            s.append(",");
+            s.append(this.k.getValue());
+
             s.append("]");
+
             s.append("[");
+
+            s.append(this.c.getValue());
+            s.append(",");
+            s.append(this.f.getValue());
+            s.append(",");
+            s.append(this.g.getValue());
+            s.append(",");
+            s.append(this.j.getValue());
+            s.append(",");
+            s.append(this.k.getValue());
+            s.append(",");
+            s.append(this.l.getValue());
+
             s.append("]");
+
             s.append(")");
             return s.toString();
         }

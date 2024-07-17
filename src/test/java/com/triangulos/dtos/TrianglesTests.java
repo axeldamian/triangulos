@@ -2,11 +2,15 @@ package com.triangulos.dtos;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class TrianglesTests {
+
+    static Logger log = LogManager.getLogger(TrianglesTests.class);
 
     @Test
     void testingSetValue() {
@@ -131,6 +135,48 @@ class TrianglesTests {
 
         Triangles newTriangles = new Triangles(triangles, 12);
         assertEquals(12, newTriangles.getL().getValue() );
+    }
+
+    @Test
+    void testingPath() {
+        Triangles triangles = new Triangles();
+
+        assertTrue( triangles.isPath() );
+
+        triangles.setValueA( 1 );
+        triangles.setValueB( 2 );
+        triangles.setValueC( 3 );
+        triangles.setValueD( 4 );
+        triangles.setValueE( 5 );
+        triangles.setValueF( 6 );
+        triangles.setValueG( 7 );
+        triangles.setValueH( 8 );
+        triangles.setValueI( 9 );
+        triangles.setValueJ( 10 );
+        triangles.setValueA( 11 );
+        triangles.setValueA( 12 );
+
+        assertFalse( triangles.isPath() );
+
+    }
+
+    @Test
+    void testingTriangle1IsFull() {
+
+        Triangles triangles = new Triangles();
+
+        triangles.setValueA(1);
+        triangles.setValueD(2);
+        triangles.setValueE(3);
+        triangles.setValueH(4);
+        triangles.setValueI(5);
+        triangles.setValueJ(6);
+
+        log.info( triangles.toString() );
+        
+        assertTrue( triangles.triangle1IsFull() );
+        assertFalse( triangles.triangle2IsFull() );
+        assertFalse( triangles.triangle3IsFull() );
     }
     
 }
