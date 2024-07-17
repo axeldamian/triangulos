@@ -423,13 +423,24 @@ public class Triangles {
         
                 if ( newTriangles.isFull() ) {
                     if ( newTriangles.checkTriangles() ) {
+                        log.info( newTriangles.toString() );
                         solutionSet.add( newTriangles );
                         return;
                     }
                 } else {
+                    if ( isBadPath() ) {
+                   return;
+               }
+                    log.info( newTriangles.toString() );
                     calculateAllSolutions(solutionSet, newTriangles);
                 }
         }
+    }
+
+    public boolean isBadPath()) {
+        return ( !this.triangle1IsFull() && !this.triangle2IsFull()  && !this.triangle3IsFull() ) || 
+        ( this.triangle1IsFull() || this.triangle2IsFull()  || this.triangle3IsFull() ) ||
+        ( !this.checkTriangle1()  || !this.checkTriangle2()  || !this.checkTriangle3() ) 
     }
 
     public Set<Point> getPointsTriangle1() {
@@ -482,8 +493,103 @@ public class Triangles {
         return ( values.size() == 12 );
     }
 
+    public boolean triangle1IsFull() {
+        
+        boolean result = true;
+
+        if ( this.a.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.d.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.e.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.h.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.i.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.j.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        return result;
+    }
+
+
+    public boolean triangle2IsFull() {
+        
+        boolean result = true;
+
+        if ( this.b.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.e.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.f.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.i.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.j.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.k.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        return result;
+    }
+
+
+    public boolean triangle3IsFull() {
+        
+        boolean result = true;
+
+        if ( this.c.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.f.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.g.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.j.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.k.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        if ( this.l.getValue() == 0 ) {
+            result = result && false;
+        }
+
+        return result;
+    }
+
     public boolean checkTriangles() {
-        return this.checkTriangle1();
+        return this.checkTriangle1() && checkTriangle2() && checkTriangle3();
         //return ( this.chechValuesNoRepeated() && this.checkTriangle1() && this.checkTriangle2() && this.checkTriangle3() );
     }
 
