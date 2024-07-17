@@ -419,38 +419,48 @@ public class Triangles {
                 continue;
             }
 
-            Triangles newTriangles = new Triangles( triangles , x );
+            Triangles newTriangles = null;
+            
+            if( isPath() ) {
+                newTriangles = new Triangles( triangles , x );
+            } else {
+                continue;
+            }
+            log.info( newTriangles.toString() );
         
                 if ( newTriangles.isFull() ) {
                     if ( newTriangles.checkTriangles() ) {
-                        log.info( newTriangles.toString() );
                         solutionSet.add( newTriangles );
                         return;
                     }
                 } else {
-                    if ( isBadPath() ) {
-                   return;
+                    if ( !isPath() ) {
+                    continue;
                }
-                    log.info( newTriangles.toString() );
-                    calculateAllSolutions(solutionSet, newTriangles);
+                    if ( isPath() ) {
+                        calculateAllSolutions(solutionSet, newTriangles);
+                    }
                 }
         }
     }
 
     public boolean isPath() {
+
+        boolean result = true;
+
         if ( !this.triangle1IsFull() && !this.triangle2IsFull()  && !this.triangle3IsFull() ) {
-            return true;
+            result = result && true;
         }
         if ( this.triangle1IsFull() && !this.checkTriangle1() ) {
-            return false;
+            result = result && false;
         }
         if ( this.triangle2IsFull()  && !this.checkTriangle2() ) {
-            return false;
+            result = result && false;
         } 
         if ( this.triangle3IsFull() && !this.checkTriangle3() ) {
-            return false;
+            result = result && false;
         }
-        return true;
+        return result;
     }
 
     public Set<Point> getPointsTriangle1() {
@@ -656,7 +666,32 @@ public class Triangles {
         return s.toString();
     }
         */
+        @Override
+        public String toString() {
+            StringBuilder s = new StringBuilder("\n");
+            s.append("(");
 
+            s.append("[");
+            s.append(this.a.getValue());
+            s.append(",");
+            s.append(this.d.getValue());
+            s.append(",");
+            s.append(this.e.getValue());
+            s.append(",");
+            s.append(this.h.getValue());
+            s.append(",");
+            s.append(this.i.getValue());
+            s.append(",");
+            
+            s.append("]");
+            s.append("[");
+            s.append("]");
+            s.append("[");
+            s.append("]");
+            s.append(")");
+            return s.toString();
+        }
+/*
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder("\n");
@@ -686,6 +721,6 @@ public class Triangles {
         s.append( this.l.getValue() );
         s.append(")");
         return s.toString();
-    }
+    }*/
     
 }
