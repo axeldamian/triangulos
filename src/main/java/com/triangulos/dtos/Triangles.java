@@ -437,10 +437,10 @@ public class Triangles {
         }
     }
 
-    public boolean isBadPath()) {
+    public boolean isBadPath() {
         return ( !this.triangle1IsFull() && !this.triangle2IsFull()  && !this.triangle3IsFull() ) || 
         ( this.triangle1IsFull() || this.triangle2IsFull()  || this.triangle3IsFull() ) ||
-        ( !this.checkTriangle1()  || !this.checkTriangle2()  || !this.checkTriangle3() ) 
+        ( !this.checkTriangle1()  || !this.checkTriangle2()  || !this.checkTriangle3() ) ;
     }
 
     public Set<Point> getPointsTriangle1() {
