@@ -466,24 +466,25 @@ public class Triangles {
         }
 
         if (  this.getSumTriangle1() > 42 ) {
-            return false;
+            result = result && false;
         }
         if ( this.getSumTriangle2() > 42 ) {
-            return false;
+            result = result && false;
         }
         if ( this.getSumTriangle3() > 42 ) {
-            return false;
+            result = result && false;
         }
 
         if ( this.triangle1IsFull() && this.getSumTriangle1() != 42 ) {
-            return false;
+            result = result && false;
         }
         if ( this.triangle2IsFull()  && this.getSumTriangle2() != 42  ) {
-            return false;
+            result = result && false;
         }
         if ( this.triangle3IsFull() && this.getSumTriangle3() != 42  ) {
-            return false;
+            result = result && false;
         }
+        
         return result;
     }
 
