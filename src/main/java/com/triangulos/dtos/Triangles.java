@@ -419,8 +419,6 @@ public class Triangles {
                 continue;
             }
 
-            log.info( triangles.toString() );
-
             Triangles newTriangles = null;
             
             if( isPath() ) {
@@ -428,6 +426,8 @@ public class Triangles {
             } else {
                 continue;
             }
+
+            log.info( newTriangles.toString() );
         
                 if ( newTriangles.isFull() ) {
                     if ( newTriangles.checkTriangles() ) {
@@ -449,28 +449,40 @@ public class Triangles {
 
         boolean result = true;
 
-        if ( !this.triangle1IsFull() && !this.triangle2IsFull()  && !this.triangle3IsFull() ) {
+        if ( !this.triangle1IsFull() || !this.triangle2IsFull()  || !this.triangle3IsFull() ) {
             result = result && true;
         }
 
-        if ( !this.triangle1IsFull() && this.getSumTriangle1() > 42 ) {
+        if ( !this.triangle1IsFull() && this.getSumTriangle1() < 42  ) {
+            result = result && true;
+        }
+
+        if ( !this.triangle2IsFull() && this.getSumTriangle2() < 42  ) {
+            result = result && true;
+        }
+
+        if ( !this.triangle3IsFull() && this.getSumTriangle3() < 42  ) {
+            result = result && true;
+        }
+
+        if (  this.getSumTriangle1() > 42 ) {
             return false;
         }
-        if ( !this.triangle2IsFull() && this.getSumTriangle2() > 42 ) {
+        if ( this.getSumTriangle2() > 42 ) {
             return false;
         }
-        if ( !this.triangle3IsFull() && this.getSumTriangle3() > 42 ) {
+        if ( this.getSumTriangle3() > 42 ) {
             return false;
         }
 
-        if ( this.triangle1IsFull() && !this.checkTriangle1() ) {
-            result = result && false;
+        if ( this.triangle1IsFull() && this.getSumTriangle1() != 42 ) {
+            return false;
         }
-        if ( this.triangle2IsFull()  && !this.checkTriangle2() ) {
-            result = result && false;
-        } 
-        if ( this.triangle3IsFull() && !this.checkTriangle3() ) {
-            result = result && false;
+        if ( this.triangle2IsFull()  && this.getSumTriangle2() != 42  ) {
+            return false;
+        }
+        if ( this.triangle3IsFull() && this.getSumTriangle3() != 42  ) {
+            return false;
         }
         return result;
     }
@@ -637,6 +649,23 @@ public class Triangles {
     private boolean checkTriangle3() {
         return this.getPointsTriangle3().size() == 6 && this.getSumTriangle3() == 42;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("\n");
+
+        s.append("[");
+
+        s.append( this.getSumTriangle1() );
+        s.append(",");
+        s.append( this.getSumTriangle2() );
+        s.append(",");
+        s.append( this.getSumTriangle3() );
+
+        s.append("]");
+
+        return s.toString();
+    }
 /*
     @Override
     public String toString() {
@@ -678,6 +707,7 @@ public class Triangles {
         return s.toString();
     }
         */
+    /*
         @Override
         public String toString() {
             StringBuilder s = new StringBuilder("\n");
@@ -734,6 +764,7 @@ public class Triangles {
             s.append(")");
             return s.toString();
         }
+    */
 /*
     @Override
     public String toString() {
