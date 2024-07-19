@@ -444,50 +444,74 @@ public class Triangles {
                 }
         }
     }
+    /*
+    public boolean isPath() {
+
+        boolean result = true;
+
+        if ( !this.triangle1IsFull() || !this.triangle2IsFull() || !this.triangle3IsFull() ) {
+            result = result && true;
+        }
+        HashSet<Integer> values = new HashSet<>();
+        values.add( this.getSumTriangle1() );
+        values.add( this.getSumTriangle2() );
+        values.add( this.getSumTriangle3() );
+        Iterator<Integer> iterator = values.iterator();
+        Integer limit = 42;
+        while ( iterator.hasNext() ) {
+            if ( iterator.next() > limit ) {
+                return false;
+            }
+        }
+        return result;
+    }
+    */
 
     public boolean isPath() {
 
         boolean result = true;
 
+        Integer limit = 42;
+
         if ( !this.triangle1IsFull() || !this.triangle2IsFull()  || !this.triangle3IsFull() ) {
             result = result && true;
         }
 
-        if ( !this.triangle1IsFull() && this.getSumTriangle1() < 42  ) {
+        if ( !this.triangle1IsFull() && this.getSumTriangle1() < limit  ) {
             result = result && true;
         }
 
-        if ( !this.triangle2IsFull() && this.getSumTriangle2() < 42  ) {
+        if ( !this.triangle2IsFull() && this.getSumTriangle2() < limit ) {
             result = result && true;
         }
 
-        if ( !this.triangle3IsFull() && this.getSumTriangle3() < 42  ) {
+        if ( !this.triangle3IsFull() && this.getSumTriangle3() < limit  ) {
             result = result && true;
         }
 
-        if (  this.getSumTriangle1() > 42 ) {
+        if (  this.getSumTriangle1() > limit) {
             result = result && false;
         }
-        if ( this.getSumTriangle2() > 42 ) {
+        if ( this.getSumTriangle2() > limit ) {
             result = result && false;
         }
-        if ( this.getSumTriangle3() > 42 ) {
+        if ( this.getSumTriangle3() > limit ) {
             result = result && false;
         }
 
-        if ( this.triangle1IsFull() && this.getSumTriangle1() != 42 ) {
+        if ( this.triangle1IsFull() && this.getSumTriangle1() != limit ) {
             result = result && false;
         }
-        if ( this.triangle2IsFull()  && this.getSumTriangle2() != 42  ) {
+        if ( this.triangle2IsFull()  && this.getSumTriangle2() != limit  ) {
             result = result && false;
         }
-        if ( this.triangle3IsFull() && this.getSumTriangle3() != 42  ) {
+        if ( this.triangle3IsFull() && this.getSumTriangle3() != limit  ) {
             result = result && false;
         }
-        
+
         return result;
     }
-
+    
     public Set<Point> getPointsTriangle1() {
         Set<Point> points = new HashSet<>();
         points.add( this.a );
@@ -651,6 +675,7 @@ public class Triangles {
         return this.getPointsTriangle3().size() == 6 && this.getSumTriangle3() == 42;
     }
 
+    /*
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder("\n");
@@ -667,6 +692,7 @@ public class Triangles {
 
         return s.toString();
     }
+    */
 /*
     @Override
     public String toString() {
@@ -707,8 +733,8 @@ public class Triangles {
 
         return s.toString();
     }
-        */
-    /*
+    */
+
         @Override
         public String toString() {
             StringBuilder s = new StringBuilder("\n");
@@ -765,7 +791,6 @@ public class Triangles {
             s.append(")");
             return s.toString();
         }
-    */
 /*
     @Override
     public String toString() {
