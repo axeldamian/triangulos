@@ -1,6 +1,7 @@
 package com.triangulos.dtos;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -419,11 +420,8 @@ public class Triangles {
                 continue;
             }
 
-            Triangles newTriangles = null;
-            
-            if( isPath() ) {
-                newTriangles = new Triangles( triangles , x );
-            } else {
+            Triangles newTriangles = new Triangles(triangles, x);
+            if( !newTriangles.isPath() ) {
                 continue;
             }
 
@@ -444,30 +442,41 @@ public class Triangles {
                 }
         }
     }
-    /*
+    
     public boolean isPath() {
 
         boolean result = true;
 
-        if ( !this.triangle1IsFull() || !this.triangle2IsFull() || !this.triangle3IsFull() ) {
+        if ( !this.triangle1IsFull() ) {
             result = result && true;
         }
+
+        if ( !this.triangle2IsFull() ) {
+            result = result && true;
+        }
+
+        if ( !this.triangle3IsFull() ) {
+            result = result && true;
+        }
+        
         HashSet<Integer> values = new HashSet<>();
         values.add( this.getSumTriangle1() );
         values.add( this.getSumTriangle2() );
         values.add( this.getSumTriangle3() );
         Iterator<Integer> iterator = values.iterator();
         Integer limit = 42;
+
         while ( iterator.hasNext() ) {
-            if ( iterator.next() > limit ) {
-                return false;
+            if ( iterator.next() <= limit ) {
+                result = result && true;
+            } else{
+                result = result && false;
             }
         }
         return result;
     }
-    */
 
-    public boolean isPath() {
+    public boolean isPath2() {
 
         boolean result = true;
 
@@ -489,7 +498,7 @@ public class Triangles {
             result = result && true;
         }
 
-        if (  this.getSumTriangle1() > limit) {
+        if ( this.getSumTriangle1() > limit) {
             result = result && false;
         }
         if ( this.getSumTriangle2() > limit ) {
@@ -753,6 +762,8 @@ public class Triangles {
             s.append(this.i.getValue());
             s.append(",");
             s.append(this.j.getValue());
+            s.append("--->");
+            s.append( this.getSumTriangle1() );
 
             s.append("]");
 
@@ -770,6 +781,9 @@ public class Triangles {
             s.append(",");
             s.append(this.k.getValue());
 
+            s.append("--->");
+            s.append( this.getSumTriangle2() );
+
             s.append("]");
 
             s.append("[");
@@ -785,6 +799,9 @@ public class Triangles {
             s.append(this.k.getValue());
             s.append(",");
             s.append(this.l.getValue());
+
+            s.append("--->");
+            s.append( this.getSumTriangle3() );
 
             s.append("]");
 
