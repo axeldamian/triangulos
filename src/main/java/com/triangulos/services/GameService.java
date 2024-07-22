@@ -1,8 +1,8 @@
 package com.triangulos.services;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
-import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
@@ -22,23 +22,31 @@ public class GameService {
         return triangles.getAllSolutions().size();
     }
 
-    public Triangles getRandomSolution() throws CloneNotSupportedException {
+    public String getRandomSolution() throws CloneNotSupportedException {
            
         if ( triangles == null) {
             triangles = new Triangles();
         }
 
-        Set<Triangles> solutions = triangles.getAllSolutions();
+        //Set<Triangles> solutions = triangles.getAllSolutions();
+        HashSet<Triangles> solutions = new HashSet<>();
         Iterator<Triangles> iterator = solutions.iterator();
         Triangles item = null;
         int cont = 1;
         Random rndm = new Random();
         int rndmNumber = rndm.nextInt(1);
+
         while ( cont <= rndmNumber && iterator.hasNext() ) {
             item = iterator.next();
             cont++;
         }
-        return item;
+        
+        return item.toString();
+    }
+
+    public Triangles getVoidTriangles() {
+        Triangles triangles = new Triangles();
+        return triangles;
     }
 
 }

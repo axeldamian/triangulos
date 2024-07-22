@@ -1,7 +1,6 @@
 package com.triangulos.dtos;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -37,7 +36,7 @@ public class Triangles {
     private Point l;
 
     public Triangles() {
-        super();
+        //super();
         this.a = new Point( 1 , 1 );
         this.b = new Point( 1 , 2 );
         this.c = new Point( 1 , 3 );
@@ -52,6 +51,7 @@ public class Triangles {
         this.j = new Point( 3 , 3 ); // shared by all
         this.k = new Point( 3 , 4 ); // shared by 2 triangles
         this.l = new Point( 3 , 5 );
+        log.info("new triangle was created");
     }
 
     public Triangles( Triangles triangles ) {
@@ -91,28 +91,12 @@ public class Triangles {
             this.a.setValue( lastNumber );
             last = true;
         }
-        if ( this.b.getValue() == 0 && !last ) {
-            this.b.setValue( lastNumber );
-            last = true;
-        }
-        if ( this.c.getValue() == 0 && !last ) {
-            this.c.setValue( lastNumber );
-            last = true;
-        }
         if ( this.d.getValue() == 0 && !last ) {
             this.d.setValue( lastNumber );
             last = true;
         }
         if ( this.e.getValue() == 0 && !last ) {
             this.e.setValue( lastNumber );
-            last = true;
-        }
-        if ( this.f.getValue() == 0 && !last ) {
-            this.f.setValue( lastNumber );
-            last = true;
-        }
-        if ( this.g.getValue() == 0 && !last ) {
-            this.g.setValue( lastNumber );
             last = true;
         }
         if ( this.h.getValue() == 0 && !last ) {
@@ -127,8 +111,26 @@ public class Triangles {
             this.j.setValue( lastNumber );
             last = true;
         }
+
+        if ( this.b.getValue() == 0 && !last ) {
+            this.b.setValue( lastNumber );
+            last = true;
+        }
+        if ( this.f.getValue() == 0 && !last ) {
+            this.f.setValue( lastNumber );
+            last = true;
+        }
         if ( this.k.getValue() == 0 && !last ) {
             this.k.setValue( lastNumber );
+            last = true;
+        }
+
+        if ( this.c.getValue() == 0 && !last ) {
+            this.c.setValue( lastNumber );
+            last = true;
+        }
+        if ( this.g.getValue() == 0 && !last ) {
+            this.g.setValue( lastNumber );
             last = true;
         }
         if ( this.l.getValue() == 0 && !last ) {
@@ -404,6 +406,8 @@ public class Triangles {
         
         HashSet<Triangles> solutionSet = new HashSet<>();
 
+        log.info("calculate solutions");
+
         Triangles triangles = new Triangles();
 
         calculateAllSolutions( solutionSet, triangles );
@@ -416,7 +420,8 @@ public class Triangles {
         for ( int x = 1; x <= 12; x++ ) {
 
             Set<Integer> values = triangles.valuesUsed();
-            if ( values.contains(x) ) {
+            Integer digit = x;
+            if ( values.contains(digit) ) {
                 continue;
             }
 
@@ -425,12 +430,13 @@ public class Triangles {
                 continue;
             }
 
-            log.info( newTriangles.toString() );
+            log.info( newTriangles.toString() ); // delete
         
                 if ( newTriangles.isFull() ) {
                     if ( newTriangles.checkTriangles() ) {
                         solutionSet.add( newTriangles );
-                        return;
+                        break;
+                       // return;
                     }
                 } else {
                     if ( !isPath() ) {
@@ -447,33 +453,24 @@ public class Triangles {
 
         boolean result = true;
 
-        if ( !this.triangle1IsFull() ) {
-            result = result && true;
-        }
+        result = result && checkIfIsUtilSolutionPartial( this.getSumTriangle1() , this.triangle1IsFull() );
+        result = result && checkIfIsUtilSolutionPartial( this.getSumTriangle2() , this.triangle2IsFull() );
+        result = result && checkIfIsUtilSolutionPartial( this.getSumTriangle3() , this.triangle3IsFull() );
 
-        if ( !this.triangle2IsFull() ) {
-            result = result && true;
-        }
-
-        if ( !this.triangle3IsFull() ) {
-            result = result && true;
-        }
-        
-        HashSet<Integer> values = new HashSet<>();
-        values.add( this.getSumTriangle1() );
-        values.add( this.getSumTriangle2() );
-        values.add( this.getSumTriangle3() );
-        Iterator<Integer> iterator = values.iterator();
-        Integer limit = 42;
-
-        while ( iterator.hasNext() ) {
-            if ( iterator.next() <= limit ) {
-                result = result && true;
-            } else{
-                result = result && false;
-            }
-        }
         return result;
+    }
+
+    private boolean checkIfIsUtilSolutionPartial(int sum, boolean isFull) {
+        if( !isFull && sum < 42 ) {
+            return true;
+        }
+        if ( isFull && sum == 42) {
+            return true;
+        }
+        if ( isFull && sum > 42) {
+            return false;
+        }
+        return false;
     }
 
     public boolean isPath2() {
